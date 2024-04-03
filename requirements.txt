@@ -1,11 +1,6 @@
 langchain
-openai
 python_dotenv
 cohere
 pypdf
-gradio
-pinecone-client
 langchain-cohere
-langchain-pinecone
-langchain-openai
 faiss-cpu
