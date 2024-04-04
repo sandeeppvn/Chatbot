@@ -1,76 +1,66 @@
+# Chatbot Based on Internal Data (PDFs)
 
-# Workshop Setup Instructions
+This project demonstrates the process of creating a chatbot that leverages internal data sources, specifically PDF documents and web pages, to generate responses. The chatbot utilizes a Retrieval-Augmented Generation (RAG) architecture, incorporating vector embeddings from documents to provide informative and contextually relevant answers.
 
-This README provides detailed instructions for setting up your environment for the workshop. Follow these steps carefully to ensure everything is correctly installed and configured.
+## Getting Started
 
-## Step 0: Setup VSCode
+These instructions will guide you through setting up the project locally to run the chatbot.
 
-1. **Create a new folder** - This will be your working directory.
-2. **Open VSCode** - Launch Visual Studio Code.
-3. **Open the Folder** - Go to `File > Open Folder` and select the newly created folder.
+### Prerequisites
 
-## Step 1: Setup GitHub
+Before you begin, ensure you have Python installed on your system. You will also need access to the required libraries and tools listed under the "Installation" section.
 
-1. **Create requirements.txt** - Similarly, create a `requirements.txt` file and fill it with the following content:
-    ```
-    langchain
-    python_dotenv
-    cohere
-    pypdf
-    langchain-cohere
-    faiss-cpu
-    ```
-3. **Publish to GitHub** - Use `Ctrl + Shift + P` > `Publish to GitHub`. Provide the repository name and ensure it is public.
-4. **Configure Git** - Open the terminal in VSCode and run:
-    ```
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    ```
-5. **Link Repository** - Use `Ctrl + Shift + P` > `Git: Add Remote`, and link it to the same name as the folder.
-6. **Initial Commit** - In VS Code, click on source control, provide the commit message as “Initial Commit” and click commit and push.
+### Installation
 
-## Step 2: Create Python Virtual Environment
+Follow these steps to set up your development environment:
 
-1. **Create Virtual Environment** - In the Terminal, run:
-    ```
-    python -m venv .venv
-    ```
-2. **Provide Permissions** (Windows) - Run:
-    ```
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-    ```
-3. **Activate the Environment** - Execute:
-    ```
-    .\.venv\Scriptsctivate
-    ```
-4. **Upgrade pip** - Run:
-    ```
-    python -m pip install --upgrade pip
-    ```
-5. **Install Requirements** - Install the required modules with:
-    ```
-    pip install -r ./requirements.txt
-    ```
-6. **Select Python Interpreter** - Use `Ctrl + Shift + P` > `Python: Select Interpreter`, and select `.venv`.
+```bash
+# Clone the repository
+git clone https://github.com/yourgithubprofile/chatbot-pdf-data.git
 
-## Step 3: Setup Coherence API Key
+# Navigate to the project directory
+cd chatbot-pdf-data
 
-1. **Create Account** - Go to [Cohere](https://cohere.ai/) and create an account.
-2. **Get API Key** - Go to the dashboard and copy the API key.
-3. **Create .env File** - Use `Ctrl + Shift + P` > `Create: New File` and name it `.env`.
-2. **Add API Key** - In the `.env` file add:
-    ```
-    COHERE_API_KEY="<api_key>"
-    ```
+# Install necessary Python packages
+pip install -r requirements.txt
+```
 
-## Step 4: Load the PDFs
+## Usage
 
-1. **Create Data Folder** - Create a new folder and name it `data`.
-2. **Add PDFs** - Place one or more PDFs in the `data` folder.
+To start the chatbot, run the Jupyter notebook:
 
-## Step 5: Test Notebook
+```bash
+jupyter notebook main.ipynb
+```
 
-1. **Open Jupyter Notebook** - Open the jupyter notebook `assigment.ipynb`.
+Follow the instructions within the notebook to interact with the chatbot.
+
+## Architecture
+
+The project is structured around several key steps:
+
+1. **Data Loading**: Utilizing `PyPDFDirectoryLoader` and `AsyncHtmlLoader` for reading PDFs and web pages.
+2. **Data Transformation**: Applying `Html2TextTransformer` for converting HTML content to text.
+3. **Text Splitting**: Chunking text using `RecursiveCharacterTextSplitter`.
+4. **Vector Embedding**: Generating vector embeddings for the chunks using `CohereEmbeddings`.
+5. **Chatbot Implementation**: Creating a chatbot that queries a Pinecone vector database to fetch relevant content.
+
+### Tools and Libraries Used
+
+- Jupyter Notebook: For interactive development and demonstrations.
+- Python: The primary programming language.
+- `langchain`, `langchain_community`, and `langchain_cohere`: For document processing, text splitting, and embedding generation.
+
+### Implementation Details
+
+The notebook includes detailed code cells for each step of the process, from loading and processing documents to initializing and querying the chatbot.
 
 
-Follow these steps carefully to ensure your workshop environment is properly set up. Enjoy the workshop!
+## Authors
+
+- **Sandeep Polavarapu** - *Initial work* - [YourGitHubProfile](https://github.com/sandeeppvn)
+
+See also the list of contributors who participated in this project.
+
+
+
